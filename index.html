@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="gallery-wrap">
+        <button id="backbtn"><i class="fa-solid fa-angle-left"></i></button>
+        <div class="gallery">
+            <div>
+                <span><img src="https://cdn.pixabay.com/photo/2019/06/01/21/37/protest-4245092_1280.jpg" alt=""></span>
+                <span><img src="https://cdn.pixabay.com/photo/2016/11/18/19/18/girl-1836493_1280.jpg" alt=""></span>
+                <span><img src="https://cdn.pixabay.com/photo/2019/12/06/06/02/model-4676684_1280.jpg" alt=""></span>
+                
+                
+            </div>
+            <div>
+                <span><img src="https://cdn.pixabay.com/photo/2019/06/01/21/37/protest-4245092_1280.jpg" alt=""></span>
+                <span><img src="https://cdn.pixabay.com/photo/2019/12/06/06/02/model-4676684_1280.jpg" alt=""></span>
+                <span><img src="https://cdn.pixabay.com/photo/2016/11/18/19/18/girl-1836493_1280.jpg" alt=""></span>
+                
+            </div>
+           
+        </div>
+        <button id="nextbtn"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
+    <!-- <script>
+        let scrollcontainer = document.querySelector('.gallery');
+        let backbtn = document.querySelector('#backbtn');
+        let nextbtn = document.querySelector('#nextbtn');
+
+        // Horizontal scroll with mouse wheel
+        scrollcontainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollcontainer.scrollLeft += evt.deltaY;
+            scrollcontainer.style.scrollbehavior = "auto";
+        });
+
+        // Next button click
+        nextbtn.addEventListener("click", () => {
+             scrollcontainer.style.scrollbehavior = "smooth";
+            scrollcontainer.scrollLeft += 900;
+           
+
+        });
+
+        // Back button click
+        backbtn.addEventListener("click", () => {
+             scrollcontainer.style.scrollbehavior = "smooth";
+            scrollcontainer.scrollLeft -= 900;
+           
+        });
+
+    </script> -->
+
+    <script>
+let scrollcontainer = document.querySelector('.gallery'); 
+let backbtn = document.querySelector('#backbtn'); 
+let nextbtn = document.querySelector('#nextbtn'); 
+
+function updateButtons() {
+    let scrollLeft = scrollcontainer.scrollLeft;
+    let maxScrollLeft = scrollcontainer.scrollWidth - scrollcontainer.clientWidth;
+
+    // Hide/Show Prev Button
+    if (scrollLeft <= 0) {
+        backbtn.classList.add("button-hidden");
+    } else {
+        backbtn.classList.remove("button-hidden");
+    }
+
+    // Hide/Show Next Button
+    if (scrollLeft >= maxScrollLeft - 5) {
+        nextbtn.classList.add("button-hidden");
+    } else {
+        nextbtn.classList.remove("button-hidden");
+    }
+}
+
+// Mouse wheel scroll
+scrollcontainer.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    scrollcontainer.scrollLeft += evt.deltaY;
+    updateButtons();
+});
+
+// Next button click
+nextbtn.addEventListener("click", () => {
+    scrollcontainer.scrollLeft += 900;
+    updateButtons();
+});
+
+// Prev button click
+backbtn.addEventListener("click", () => {
+    scrollcontainer.scrollLeft -= 900;
+    updateButtons();
+});
+
+// Scroll listener
+scrollcontainer.addEventListener("scroll", updateButtons);
+
+// Initialize
+updateButtons();
+</script>
+
+</body>
+
+</html>
